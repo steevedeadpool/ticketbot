@@ -5,7 +5,7 @@ main.sqlite
 .env.local
 package-lock.json
 yarn.lock
-env.json
+env.ts
 
 # folders
 build
