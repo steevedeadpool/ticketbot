@@ -5,12 +5,11 @@
     "outDir": "build",
     "rootDir": "src",
     "strict": true,
-    "moduleResolution": "Node",
+    "moduleResolution": "node",
     "allowSyntheticDefaultImports": true,
-
+    "strictPropertyInitialization": false,
     "experimentalDecorators": true,
-    "emitDecoratorMetadata": false,
-
+    "emitDecoratorMetadata": true,
     "skipLibCheck": true,
     "forceConsistentCasingInFileNames": true
   },

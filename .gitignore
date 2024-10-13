@@ -1,4 +1,5 @@
 # files
+main.sqlite
 .vscode
 .env
 .env.local
