@@ -1,5 +1,5 @@
 import 'reflect-metadata'
-import { ApplicationCommandOptionType, CommandInteraction, Client, Message, User, Guild as gld, ChannelType, GuildMember, Role, BaseGuildTextChannel,} from "discord.js";
+import { ApplicationCommandOptionType, CommandInteraction, User, Guild as gld, ChannelType, GuildMember, Role} from "discord.js";
 import type { SimpleCommandMessage } from "discordx";
 import {
   Guild,
@@ -12,7 +12,7 @@ import { Ticket } from '../typeorm/entities/Ticket.js';
 import { AppDataSource } from "../typeorm/data-sorce.js";
 import { addSupport, addSupportRow, closeTicket, isTicket, isTicketOwner } from '../utils/utils.js';
 import { Support } from '../typeorm/entities/Support.js';
-import { permission } from 'process';
+import { GUILD_ID } from '../env.js';
 
 @Discord()
 export class Example {
@@ -26,7 +26,7 @@ export class Example {
     }
   }
 
-  @Guild("1090552478606569524")
+  @Guild(GUILD_ID)
   @Slash({ description: "create-ticket", name: "create-ticket" })
   async create_ticket( interaction: CommandInteraction) {
     let ticket = new Ticket()
@@ -65,7 +65,7 @@ export class Example {
     }
   }
 
-  @Guild("1090552478606569524")
+  @Guild(GUILD_ID)
   @Slash({ description: "closes ticket", name: "close-ticket" }) 
   async close_ticket( interaction: CommandInteraction) {
     if(await isTicket(interaction.channel?.id) == true) {
@@ -79,7 +79,7 @@ export class Example {
 
 
   //Добавляет юзера в тикет
-  @Guild("1090552478606569524")
+  @Guild(GUILD_ID)
   @Slash({ description: "add user to ticket", name: "add-user" }) 
   async add_user(
     @SlashOption({
@@ -107,7 +107,7 @@ export class Example {
 
 
   //Убирает юзера из тикета
-  @Guild("1090552478606569524")
+  @Guild(GUILD_ID)
   @Slash({ description: "removes user from ticket", name: "remove" }) 
   async remove_user(
     @SlashOption({
@@ -134,7 +134,7 @@ export class Example {
 
 
 
-  @Guild("1090552478606569524")
+  @Guild(GUILD_ID)
   @Slash({ description: "add support role or ticket", name: "add-support" }) 
   add_support(
     @SlashOption({
@@ -150,13 +150,13 @@ export class Example {
       interaction.reply("a")
   }
   
-  @Guild("1090552478606569524")
+  @Guild(GUILD_ID)
   @Slash({ description: "TEMP COMMAND", name: "temp_command" })
   temp_command(interaction: CommandInteraction) {
     addSupportRow(interaction.guild!.id)
   } 
   
-  @Guild("1090552478606569524")
+  @Guild(GUILD_ID)
   @Slash({ description: "test", name: "test" })
   test(interaction: CommandInteraction) {
     console.log(interaction.channel?.type)

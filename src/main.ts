@@ -5,7 +5,7 @@ import { Client } from "discordx";
 import "./commands/commands.js"
 import 'reflect-metadata'
 import { addSupportRow } from "./utils/utils.js";
-
+import { TOKEN } from "./env.js";
 export const bot = new Client({
   // To use only guild command
   // botGuilds: [(client) => client.guilds.cache.map((guild) => guild.id)],
@@ -67,7 +67,7 @@ async function run() {
   // The following syntax should be used in the ECMAScript environment
   await importx(`${dirname(import.meta.url)}/{events,commands}/**/*.{ts,js}`);
   // Log in with your bot token
-  await bot.login("");
+  await bot.login(TOKEN);
 }
 
 void run();
