@@ -2,7 +2,7 @@ import { Ticket } from '../typeorm/entities/Ticket.js';
 import { AppDataSource } from "../typeorm/data-sorce.js";
 import { Support } from '../typeorm/entities/Support.js';
 import 'reflect-metadata'
-import { TextBasedChannel } from 'discord.js';
+import { ChannelType, TextBasedChannel } from 'discord.js';
 import { channel } from 'diagnostics_channel';
 
 export async function isTicket(channelid: string | undefined) {
@@ -44,3 +44,5 @@ export async function addSupport(id: string, serverid: string) {
         await AppDataSource.manager.save(support)
         
 }
+
+
