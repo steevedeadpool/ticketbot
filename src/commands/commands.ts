@@ -97,7 +97,7 @@ export class Example {
       if(await isTicketOwner(interaction.user.id, interaction.channel?.id) == true) {
         if(interaction.channel?.type == 0) {
           interaction.channel.permissionOverwrites.edit(usr, {ViewChannel: true, SendMessages: true})
-          interaction.reply({content: `Added ${usr.toString} to ticket`})
+          interaction.reply({content: `Added <@${usr.id}> to ticket`})
         } else {
           interaction.reply({content: "you are not ticket owner", ephemeral: true})
         }
